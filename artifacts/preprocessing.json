@@ -13,7 +13,8 @@
     "class_limit",
     "is_plus_class",
     "class_vs_prev_bw",
-    "is_national"
+    "is_national",
+    "prev_misses"
   ],
   "medians": {
     "prev_total": 505.0,
@@ -29,7 +30,8 @@
     "class_limit": 83.0,
     "is_plus_class": 0.0,
     "class_vs_prev_bw": 1.9200000000000017,
-    "is_national": 1.0
+    "is_national": 1.0,
+    "prev_misses": 2.0
   },
   "means": {
     "prev_total": 486.2747308551696,
@@ -45,7 +47,8 @@
     "class_limit": 80.59536867763559,
     "is_plus_class": 0.015843997562461912,
     "class_vs_prev_bw": 2.856404631322364,
-    "is_national": 0.531586431037985
+    "is_national": 0.531586431037985,
+    "prev_misses": 1.9744058500914077
   },
   "stds": {
     "prev_total": 138.27754714338087,
@@ -61,6 +64,7 @@
     "class_limit": 17.27686428427706,
     "is_plus_class": 0.12488447989155022,
     "class_vs_prev_bw": 5.478086769391426,
-    "is_national": 0.499051988306253
+    "is_national": 0.499051988306253,
+    "prev_misses": 1.2870100178651418
   }
 }
