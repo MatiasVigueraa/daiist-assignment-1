@@ -1,9 +1,5 @@
 # Assignment 1 Report
 
-*Delete this italic guidance as you fill in each section. You'll be asked to
-defend any of this without your code in front of you — write only what you
-can actually explain.*
-
 - **Name**: Matias Viguera Barrientos
 - **Student ID**: 18542
 - **Email**: mviguera.ieu2022@student.ie.edu
