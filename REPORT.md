@@ -83,7 +83,7 @@ The model's objective it to predict next competition's total in kg, which is con
 * Manual PyTorch loop: raw tensors w and b initialized at zero, MSE loss, gradients from loss.backward(), and a manual update w -= lr * w.grad inside torch.no_grad(). Full-batch gradient descent, learning rate 0.1, 3,000 epochs.
 * Standard PyTorch: a torch.nn.Module wrapping nn.Linear, nn.MSELoss and torch.optim.SGD with the same learning rate and epochs (default random initialization).
 
-Since the features are standarized, the learning rate of 0.1 is stable. Training loss falls from 276,000 to 530 withing the first 500 epochs. 
+Since the features are standarized, the learning rate of 0.1 is stable. Training loss falls from 276,000 to 527 withing the first 500 epochs. 
 
 | Model | MAE (kg) | R² | Mean error (kg) | Overpredicted (%) |
 |---|---|---|---|---|
@@ -101,7 +101,7 @@ So, can we say that the three agree? Well, yes, they produce identical metrics a
 | Configuration | Agreement between the three models | Why |
 |---|---|---|
 | A. `prev_total` + `best_prev_total` + `gap_to_best` | Predictions identical; coefficients almost identical (63.90 / 63.50 / −1.30; nn.Module 63.89 / 63.51) | `gap_to_best` = best − prev exactly, so infinitely many coefficient combinations give the same predictions; the individual coefficients can't be interpreted |
-| B. `prev_total` + `best_prev_total` | Disagree: `prev_total` coefficient [sk-learn value] vs [PyTorch value]; predictions up to [max difference] kg apart | The two features are almost identical, so the loss surface is nearly flat in that direction and gradient descent hasn't converged after 3,000 epochs |
+| B. `prev_total` + `best_prev_total` | Disagree: `prev_total` coefficient 90.77 (scikit-learn) vs 74.53 (PyTorch), `best_prev_total` 36.87 vs 53.21; predictions up to 10.97 kg apart, although MAE is identical (17.5 kg) | The two features are almost identical, so the loss surface is nearly flat in that direction: after 3,000 epochs the training loss is still creeping down (528.0 → 527.5) towards the 527.0 that configuration C reaches by epoch 500 |
 | C. `prev_total` + `gap_to_best` (final) | Exact: max difference 0.0 kg | Same information in two weakly correlated features, so gradient descent converges to the exact solution |
 
 The coefficient say that the previous total dominates (127kg), next is time since last competition (+8.1), sex (+7.7), moving up weight class (+7.6) and age (-5.9). Previous attempts add 1.9 which is consistent with the bounce back idea.
